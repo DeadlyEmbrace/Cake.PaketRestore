@@ -1,0 +1,33 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".paket", ".paket", "{5E929D6C-B5A2-4641-AE6B-DFA9A0EBCDB0}"
+	ProjectSection(SolutionItems) = preProject
+		paket.dependencies = paket.dependencies
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cake.PaketRestore", "Cake.PaketRestore\Cake.PaketRestore.csproj", "{AA2C2966-F3CB-481E-97E3-41BAA17F9805}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cake.PaketRestore.Tests", "Cake.PaketRestore.Tests\Cake.PaketRestore.Tests.csproj", "{9F046CD0-3E2A-44DD-B2E5-62FD0A20017E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{AA2C2966-F3CB-481E-97E3-41BAA17F9805}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AA2C2966-F3CB-481E-97E3-41BAA17F9805}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AA2C2966-F3CB-481E-97E3-41BAA17F9805}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AA2C2966-F3CB-481E-97E3-41BAA17F9805}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9F046CD0-3E2A-44DD-B2E5-62FD0A20017E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9F046CD0-3E2A-44DD-B2E5-62FD0A20017E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9F046CD0-3E2A-44DD-B2E5-62FD0A20017E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9F046CD0-3E2A-44DD-B2E5-62FD0A20017E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

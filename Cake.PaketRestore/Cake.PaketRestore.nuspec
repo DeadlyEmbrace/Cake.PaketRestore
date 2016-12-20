@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <metadata xmlns="http://schemas.microsoft.com/packaging/21.0.07/nuspec.xsd">
+      <id>Cake.PaketRestore</id>
+      <version>0.0.0</version>
+      <authors>NineTail Labs</authors>
+      <owners>NineTail Labs</owners>
+      <title>Cake.PaketRestore</title>
+      <description>Cake addin for easy usage of Paket.</description>
+      <summary>Cake addin for easy usage of Paket.</summary>
+      <licenseUrl>https://raw.githubusercontent.com/NinetailLabs/Cake.PaketRestore/master/LICENSE</licenseUrl>
+      <projectUrl>https://github.com/NinetailLabs/Cake.PaketRestore</projectUrl>
+      <iconUrl>https://raw.githubusercontent.com/NinetailLabs/Cake.PaketRestore/master/icon.png</iconUrl>
+      <requireLicenseAcceptance>false</requireLicenseAcceptance>
+      <copyright>Copyright (c) NineTail Labs 2016</copyright>
+      <releaseNotes>ReleaseNotesHere</releaseNotes>
+      <tags>Cake Script Build Addin</tags>
+
+      <dependencies>
+         <dependency id="Cake.Core" version="0.17.0" />
+      </dependencies>
+   </metadata>
+
+   <files>
+      <file src="bin/Release/Cake.PaketRestore.dll" target="lib\net45" />
+      <file src="bin/Release/Cake.PaketRestore.xml" target="lib\net45" />
+      <file src="bin/Release/Cake.PaketRestore.pdb" target="lib\net45" />
+    </files>
+</package>
