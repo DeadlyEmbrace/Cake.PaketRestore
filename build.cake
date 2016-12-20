@@ -132,6 +132,7 @@ Task ("GenerateReleaseNotes")
 		});
 
 		releaseNotesText = FileReadText(releasePath);
+		Information(releaseNotesText);
 	});
 
 Task ("Nuget")
