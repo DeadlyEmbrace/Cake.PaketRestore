@@ -22,8 +22,8 @@
    </metadata>
 
    <files>
-      <file src="Cake.VersionReader/bin/Release/Cake.PaketRestore.dll" target="lib/net45" />
-      <file src="Cake.VersionReader/bin/Release/Cake.PaketRestore.xml" target="lib/net45" />
-      <file src="Cake.VersionReader/bin/Release/Cake.PaketRestore.pdb" target="lib/net45" />
+      <file src="bin/Release/Cake.PaketRestore.dll" target="lib\net45" />
+      <file src="bin/Release/Cake.PaketRestore.xml" target="lib\net45" />
+      <file src="bin/Release/Cake.PaketRestore.pdb" target="lib\net45" />
     </files>
 </package>
