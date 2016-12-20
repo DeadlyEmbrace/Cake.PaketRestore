@@ -13,7 +13,7 @@
       <iconUrl>https://raw.githubusercontent.com/NinetailLabs/Cake.PaketRestore/master/icon.png</iconUrl>
       <requireLicenseAcceptance>false</requireLicenseAcceptance>
       <copyright>Copyright (c) NineTail Labs 2016</copyright>
-      <releaseNotes>ReleaseNotesHere</releaseNotes>
+      <releaseNotes>First major release</releaseNotes>
       <tags>Cake Script Build Addin</tags>
 
       <dependencies>

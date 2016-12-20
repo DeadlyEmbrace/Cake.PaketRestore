@@ -146,7 +146,7 @@ Task ("Nuget")
 
 		CreateDirectory ("./nupkg/");
 		ReplaceRegexInFiles(nuspecFile, "0.0.0", version);
-		ReplaceRegexInFiles(nuspecFile, "ReleaseNotesHere", releaseNotesText);
+		//ReplaceRegexInFiles(nuspecFile, "ReleaseNotesHere", releaseNotesText);
 		
 		NuGetPack (nuspecFile, new NuGetPackSettings { 
 			Verbosity = NuGetVerbosity.Detailed,
@@ -198,7 +198,7 @@ Task ("Release")
 	.IsDependentOn ("Build")
 	.IsDependentOn ("UnitTests")
 	.IsDependentOn ("CoverageUpload")
-	.IsDependentOn ("GenerateReleaseNotes")
+	//.IsDependentOn ("GenerateReleaseNotes")
 	.IsDependentOn ("Nuget")
     .IsDependentOn ("Push");
 
