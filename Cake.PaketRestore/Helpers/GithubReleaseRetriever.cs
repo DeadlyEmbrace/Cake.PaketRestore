@@ -24,7 +24,7 @@ namespace Cake.PaketRestore.Helpers
         public GitHubReleaseRetriever(IGitHubApiUrlHelper gitHubApiUrlHelper)
         {
             _httpClient = new HttpClient();
-            _httpClient.DefaultRequestHeaders.Add("User-Agent", "Custom");
+            _httpClient.DefaultRequestHeaders.Add("User-Agent", "Cake.PaketRestore");
             _gitHubApiUrlHelper = gitHubApiUrlHelper;
         }
 
@@ -89,7 +89,7 @@ namespace Cake.PaketRestore.Helpers
             if (!response.IsSuccessStatusCode)
             {
                 _log?.Error(
-                    "Error occured while looking up latest details. Server responded with {StatusCode} - {Reason}",
+                    "Error occured while looking up latest details. Server responded with {0} - {1}",
                     ((int)response.StatusCode).ToString(), response.ReasonPhrase);
                 return string.Empty;
             }
