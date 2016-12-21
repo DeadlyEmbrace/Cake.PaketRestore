@@ -23,7 +23,7 @@ namespace Cake.PaketRestore.Extensions
                 return;
             }
             Directory.CreateDirectory(directoryPath.FullPath);
-            log.Information("{Directory} was created", directoryPath);
+            log.Information("{0} was created", directoryPath.FullPath);
         }
 
         #endregion
