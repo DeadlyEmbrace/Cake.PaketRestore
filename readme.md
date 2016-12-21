@@ -6,7 +6,7 @@
 
 An addin for [Cake](http://cakebuild.net/) that allows the usage of [Paket](https://fsprojects.github.io/Paket/)
 
-This addin allows for the easy retrieval of the latest Paket bootrapper (if required) as well as the execution of the bootrapper.
+This addin allows for the easy retrieval of the latest Paket bootstrapper (if required) as well as the execution of the bootstrapper.
 
 It also allows calling restore or update on Paket
 
