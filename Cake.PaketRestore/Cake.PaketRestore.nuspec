@@ -19,7 +19,6 @@
 
       <dependencies>
          <dependency id="Cake.Core" version="0.17.0" />
-         <dependency id="Newtonsoft.Json" version="9.0" />
       </dependencies>
    </metadata>
 
@@ -27,5 +26,6 @@
       <file src="bin/Release/Cake.PaketRestore.dll" target="lib\net45" />
       <file src="bin/Release/Cake.PaketRestore.xml" target="lib\net45" />
       <file src="bin/Release/Cake.PaketRestore.pdb" target="lib\net45" />
+      <file src="bin/Release/Newtonsoft.Json.dll" target="lib\net45" />
     </files>
 </package>
