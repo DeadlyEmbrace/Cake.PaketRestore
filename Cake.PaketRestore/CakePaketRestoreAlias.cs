@@ -5,6 +5,7 @@ using Cake.Core.IO;
 using Cake.PaketRestore.Extensions;
 using Cake.PaketRestore.Helpers;
 using Cake.PaketRestore.Interfaces;
+using System.IO;
 using Path = System.IO.Path;
 
 namespace Cake.PaketRestore
@@ -134,7 +135,8 @@ namespace Cake.PaketRestore
             var releaseRetriever = new GitHubReleaseRetriever(urlHelper, retrieverLog);
 
             paketDirectory.CheckAndCreateDirectory(context.Log);
-            if (context.FileSystem.GetFile(new FilePath(Path.Combine(paketDirectory.FullPath, PaketAsset))).Exists)
+            //if (context.FileSystem.GetFile(new FilePath(Path.Combine(paketDirectory.FullPath, PaketAsset))).Exists)
+            if (File.Exists(Path.Combine(paketDirectory.FullPath, PaketAsset)))
             {
                 context.Log.Information("Paket Bootstrapper already exists - skipping download");
                 return;

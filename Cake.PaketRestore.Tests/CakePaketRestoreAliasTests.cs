@@ -9,6 +9,7 @@ using Moq;
 using Newtonsoft.Json;
 using NUnit.Framework;
 using System;
+using System.IO;
 using System.Linq;
 using Path = System.IO.Path;
 
@@ -213,9 +214,11 @@ namespace Cake.PaketRestore.Tests
         public void RetrieveBootstrapperDoesNothingIfBootstrapperAlreadyExists()
         {
             // arrange
-            var directory = new DirectoryPath(Guid.NewGuid().ToString());
+            var directory = new DirectoryPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, Guid.NewGuid().ToString()));
             var bootstrapperPath = new FilePath(Path.Combine(directory.FullPath, PaketBootstrapper));
             var fixture = new CakePaketRestoreAliasFixture();
+            Directory.CreateDirectory(directory.FullPath);
+            File.Create(Path.Combine(directory.FullPath, PaketBootstrapper)).Close();
 
             fixture.FileSysteMock.Setup(t => t.GetFile(bootstrapperPath).Exists).Returns(true);
 
