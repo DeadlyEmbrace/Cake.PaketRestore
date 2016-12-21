@@ -13,11 +13,13 @@
       <iconUrl>https://raw.githubusercontent.com/NinetailLabs/Cake.PaketRestore/master/icon.png</iconUrl>
       <requireLicenseAcceptance>false</requireLicenseAcceptance>
       <copyright>Copyright (c) NineTail Labs 2016</copyright>
-      <releaseNotes>First major release</releaseNotes>
+      <releaseNotes>Fixed: Crash if .paket and paket.bootstrapper.exe does not exits
+       Fixed: Missing dependency that could cause a crash</releaseNotes>
       <tags>Cake Script Build Addin</tags>
 
       <dependencies>
          <dependency id="Cake.Core" version="0.17.0" />
+         <dependency id="Newtonsoft.Json" version="9.0">
       </dependencies>
    </metadata>
 
