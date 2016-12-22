@@ -123,7 +123,19 @@ namespace Cake.PaketRestore
         /// <param name="context">Cake context</param>
         /// <param name="paketDirectory">Location of the .paket folder</param>
         [CakeMethodAlias]
-        public static void RetrievePaketBootloader(this ICakeContext context, DirectoryPath paketDirectory)
+        public static void RetrievePaketBootstrapper(this ICakeContext context, DirectoryPath paketDirectory)
+        {
+            context.RetrievePaketBootstrapper(paketDirectory, string.Empty);
+        }
+
+        /// <summary>
+        /// Check if the Paket Bootstrapper exists and retrieve the latest version from GitHub if it doesn't
+        /// </summary>
+        /// <param name="context">Cake context</param>
+        /// <param name="paketDirectory">Location of the .paket folder</param>
+        /// <param name="githubOAuthToken">GitHub OAuth token - This token does not require any scope</param>
+        [CakeMethodAlias]
+        public static void RetrievePaketBootstrapper(this ICakeContext context, DirectoryPath paketDirectory, string githubOAuthToken)
         {
             var urlPartHelper = new GitHubUrlPathParts
             {
@@ -132,10 +144,9 @@ namespace Cake.PaketRestore
 
             var urlHelper = new GitHubApiUrlHelper(urlPartHelper);
             var retrieverLog = new CakeRetrieverLog(context.Log);
-            var releaseRetriever = new GitHubReleaseRetriever(urlHelper, retrieverLog);
+            var releaseRetriever = new GitHubReleaseRetriever(urlHelper, retrieverLog, githubOAuthToken);
 
             paketDirectory.CheckAndCreateDirectory(context.Log);
-            //if (context.FileSystem.GetFile(new FilePath(Path.Combine(paketDirectory.FullPath, PaketAsset))).Exists)
             if (File.Exists(Path.Combine(paketDirectory.FullPath, PaketAsset)))
             {
                 context.Log.Information("Paket Bootstrapper already exists - skipping download");
@@ -194,7 +205,7 @@ namespace Cake.PaketRestore
         {
             if (settings.RetrieveBootstrapper)
             {
-                context.RetrievePaketBootloader(paketDirectory);
+                context.RetrievePaketBootstrapper(paketDirectory, settings.GitHubOAuthToken);
             }
             if (settings.RetrievePaketExecutable)
             {

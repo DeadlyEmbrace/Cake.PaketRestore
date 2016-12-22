@@ -49,6 +49,7 @@
     <Compile Include="Attributes\StringArrayArgumentAttribute.cs" />
     <Compile Include="Attributes\SwitchArgumentAttribute.cs" />
     <Compile Include="CakePaketRestoreAlias.cs" />
+    <Compile Include="Extensions\HttpHeadersExtension.cs" />
     <Compile Include="Extensions\StringArrayExtensions.cs" />
     <Compile Include="Extensions\DirectoryPathExtensions.cs" />
     <Compile Include="Helpers\ArgumentStringBuilder.cs" />
