@@ -11,6 +11,7 @@ using NUnit.Framework;
 using System;
 using System.IO;
 using System.Linq;
+using System.Net;
 using Path = System.IO.Path;
 
 namespace Cake.PaketRestore.Tests
@@ -44,11 +45,13 @@ namespace Cake.PaketRestore.Tests
 
             fixture.FileSysteMock.Setup(t => t.GetFile(bootstrapperPath).Exists).Returns(false);
             httpMock.Stub(x => x.Get(BootStrapperUrl))
+                .AddHeader("X-RateLimit-Limit", "2")
+                .AddHeader("X-RateLimit-Remaining", "1")
                 .Return("application/json")
                 .Return(JsonConvert.SerializeObject(transferModelDummy))
                 .OK();
 
-            var act = new Action(() => fixture.GetCakeContext.RetrievePaketBootloader(directory));
+            var act = new Action(() => fixture.GetCakeContext.RetrievePaketBootstrapper(directory));
 
             // act
             // assert
@@ -66,11 +69,16 @@ namespace Cake.PaketRestore.Tests
             var bootstrapperPath = new FilePath(Path.Combine(directory.FullPath, PaketBootstrapper));
 
             const string fakeUrl = "http://localhost:9955";
+            var httpMock = HttpMockRepository.At(fakeUrl);
             CakePaketRestoreAlias.GithubUrlPath = fakeUrl;
 
             fixture.FileSysteMock.Setup(t => t.GetFile(bootstrapperPath).Exists).Returns(false);
+            httpMock.Stub(x => x.Get(BootStrapperUrl))
+                .AddHeader("X-RateLimit-Limit", "2")
+                .AddHeader("X-RateLimit-Remaining", "1")
+                .WithStatus(HttpStatusCode.BadRequest);
 
-            var act = new Action(() => fixture.GetCakeContext.RetrievePaketBootloader(directory));
+            var act = new Action(() => fixture.GetCakeContext.RetrievePaketBootstrapper(directory));
 
             // act
             // assert
@@ -223,7 +231,7 @@ namespace Cake.PaketRestore.Tests
             fixture.FileSysteMock.Setup(t => t.GetFile(bootstrapperPath).Exists).Returns(true);
 
             // act
-            fixture.GetCakeContext.RetrievePaketBootloader(directory);
+            fixture.GetCakeContext.RetrievePaketBootstrapper(directory);
 
             // assert
             fixture.GetCakeLog.Messages.Last()
@@ -279,7 +287,7 @@ namespace Cake.PaketRestore.Tests
                 .OK();
 
             // act
-            fixture.GetCakeContext.RetrievePaketBootloader(directory);
+            fixture.GetCakeContext.RetrievePaketBootstrapper(directory);
 
             // assert
             fixture.GetCakeLog.Messages.Last().Format.Should().Be("Completed retrieval of the Paket Bootstrapper");

@@ -49,6 +49,7 @@
     <Compile Include="Attributes\StringArrayArgumentAttribute.cs" />
     <Compile Include="Attributes\SwitchArgumentAttribute.cs" />
     <Compile Include="CakePaketRestoreAlias.cs" />
+    <Compile Include="Extensions\HttpHeadersExtension.cs" />
     <Compile Include="Extensions\StringArrayExtensions.cs" />
     <Compile Include="Extensions\DirectoryPathExtensions.cs" />
     <Compile Include="Helpers\ArgumentStringBuilder.cs" />
@@ -107,4 +108,5 @@
     </When>
   </Choose>
   <Import Project="..\packages\SemVer.Git.MSBuild\build\$(__paket__SemVer_Git_MSBuild_targets).targets" Condition="Exists('..\packages\SemVer.Git.MSBuild\build\$(__paket__SemVer_Git_MSBuild_targets).targets')" Label="Paket" />
+  <Import Project="..\packages\SemVer.Git.MSBuild\build\$(__paket__SemVer_MSBuild_targets).targets" Condition="Exists('..\packages\SemVer.Git.MSBuild\build\$(__paket__SemVer_MSBuild_targets).targets')" Label="Paket" />
 </Project>

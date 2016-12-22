@@ -43,6 +43,7 @@
   <ItemGroup>
     <Compile Include="CakePaketRestoreAliasTests.cs" />
     <Compile Include="Data\ValidResponseData.cs" />
+    <Compile Include="Extensions\HttpHeaderExtensionTests.cs" />
     <Compile Include="Extensions\StringArrayExtensionsTests.cs" />
     <Compile Include="Extensions\StringExtensionsTests.cs" />
     <Compile Include="Fixtures\CakeLogFixture.cs" />

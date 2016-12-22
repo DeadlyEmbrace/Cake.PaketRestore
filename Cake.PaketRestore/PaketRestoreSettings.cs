@@ -28,6 +28,15 @@ namespace Cake.PaketRestore
         public bool Force { get; set; }
 
         /// <summary>
+        /// GitHub OAuthToken - Used to increase Rate Limit when used on a shared build system.
+        /// Has no effect if <see cref="IRestoreSetting.RetrieveBootstrapper"/> is not used.
+        /// Token should be created <see>
+        ///         <cref>https://github.com/settings/tokens/new</cref>
+        ///     </see> and require no scopes
+        /// </summary>
+        public string GitHubOAuthToken { get; set; }
+
+        /// <summary>
         /// Allows to restore a single group.
         /// </summary>
         [StringArgument("group", 5)]

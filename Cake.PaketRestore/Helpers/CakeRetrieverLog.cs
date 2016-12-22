@@ -43,6 +43,12 @@ namespace Cake.PaketRestore.Helpers
             _log.Information(messageTemplate, args.ConvertToObjectArray());
         }
 
+        /// <inheritdoc />
+        public void Warning(string messageTemplate, params string[] args)
+        {
+            _log.Write(Verbosity.Normal, LogLevel.Warning, messageTemplate, args.ConvertToObjectArray());
+        }
+
         #endregion
 
         #region Variables
