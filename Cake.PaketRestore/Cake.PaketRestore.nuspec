@@ -13,8 +13,9 @@
       <iconUrl>https://raw.githubusercontent.com/NinetailLabs/Cake.PaketRestore/master/icon.png</iconUrl>
       <requireLicenseAcceptance>false</requireLicenseAcceptance>
       <copyright>Copyright (c) NineTail Labs 2016</copyright>
-      <releaseNotes>Fixed: Crash if .paket and paket.bootstrapper.exe does not exits
-       Fixed: Missing dependency that could cause a crash</releaseNotes>
+      <releaseNotes>Feature: Instead of crashing on GitHub rate limit fall back to known bootstrapper download URL (with warning)
+                    Feature: Allow user to provide GitHub auth token (no scopes) to bypass Rate Limit (up from 60 to 5000 requests per hour)
+                    Breaking Change: Rename RetrievePaketBootloader to RetrievePaketBootstrapper</releaseNotes>
       <tags>Cake Script Build Addin</tags>
 
       <dependencies>
