@@ -85,6 +85,30 @@ namespace Cake.PaketRestore.Tests.Helpers
             logMessage.Arguments.First().Should().Be(argument);
         }
 
+        [Test]
+        public void WarningMessagesAreCorrectlyPassedToCakeLogger()
+        {
+            // arrange
+            const string message = "Test log";
+            const string argument = "Test Argument";
+            var args = new[] { argument };
+
+            var cakeLogDummy = new CakeLogFixture();
+            var sut = new CakeRetrieverLog(cakeLogDummy);
+
+            // act
+            sut.Warning(message, args);
+
+            // assert
+            cakeLogDummy.Messages.Count.Should().Be(1);
+            var logMessage = cakeLogDummy.Messages.First();
+            logMessage.LogLevel.Should().Be(LogLevel.Warning);
+            logMessage.Verbosity.Should().Be(Verbosity.Normal);
+            logMessage.Format.Should().Be(message);
+            logMessage.Arguments.Length.Should().Be(1);
+            logMessage.Arguments.First().Should().Be(argument);
+        }
+
         #endregion
     }
 }

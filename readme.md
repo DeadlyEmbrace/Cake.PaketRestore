@@ -18,7 +18,8 @@ You can easily reference Cake.PaketRestore directly in your build script using C
 ### Methods
 The following methods are provided:
 
-- RetrievePaketBootloader(this ICakeContext context, DirectoryPath paketDirectory)
+- RetrievePaketBootstrapper(this ICakeContext context, DirectoryPath paketDirectory)
+- RetrievePaketBootstrapper(this ICakeContext context, DirectoryPath paketDirectory, string githubOAuthToken)
 
 *Check if the Paket Bootstrapper exists and retrieve the latest version from GitHub if it doesn't*
 

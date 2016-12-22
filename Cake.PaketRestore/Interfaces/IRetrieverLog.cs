@@ -31,6 +31,13 @@ namespace Cake.PaketRestore.Interfaces
         /// <param name="args">Arguments for the template</param>
         void Information(string messageTemplate, params string[] args);
 
+        /// <summary>
+        /// Log a warning
+        /// </summary>
+        /// <param name="messageTemplate">Log template</param>
+        /// <param name="args">Arguments for the template</param>
+        void Warning(string messageTemplate, params string[] args);
+
         #endregion
     }
 }

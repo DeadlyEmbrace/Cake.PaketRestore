@@ -38,6 +38,11 @@ namespace Cake.PaketRestore.Tests.Helpers
             LoggedMessages.Add(new LogCapture(LogType.Information, messageTemplate, args));
         }
 
+        public void Warning(string messageTemplate, params string[] args)
+        {
+            LoggedMessages.Add(new LogCapture(LogType.Warning, messageTemplate, args));
+        }
+
         #endregion
     }
 
@@ -75,6 +80,7 @@ namespace Cake.PaketRestore.Tests.Helpers
     public enum LogType
     {
         Information,
-        Error
+        Error,
+        Warning
     }
 }

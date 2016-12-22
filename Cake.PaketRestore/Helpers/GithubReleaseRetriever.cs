@@ -1,4 +1,5 @@
-﻿using Cake.PaketRestore.Interfaces;
+﻿using Cake.PaketRestore.Extensions;
+using Cake.PaketRestore.Interfaces;
 using Cake.PaketRestore.Interfaces.Helpers;
 using Cake.PaketRestore.Models;
 using Newtonsoft.Json;
@@ -21,11 +22,18 @@ namespace Cake.PaketRestore.Helpers
         /// Constructor
         /// </summary>
         /// <param name="gitHubApiUrlHelper"></param>
-        public GitHubReleaseRetriever(IGitHubApiUrlHelper gitHubApiUrlHelper)
+        /// /// <param name="oAuthToken">GitHub OAuth token - Pass an empty string if not used</param>
+        public GitHubReleaseRetriever(IGitHubApiUrlHelper gitHubApiUrlHelper, string oAuthToken)
         {
             _httpClient = new HttpClient();
             _httpClient.DefaultRequestHeaders.Add("User-Agent", "Cake.PaketRestore");
+            if (!string.IsNullOrEmpty(oAuthToken))
+            {
+                _httpClient.DefaultRequestHeaders.Add("Authorization", $"token {oAuthToken}");
+            }
+
             _gitHubApiUrlHelper = gitHubApiUrlHelper;
+            _oAuthToken = oAuthToken;
         }
 
         /// <summary>
@@ -34,8 +42,9 @@ namespace Cake.PaketRestore.Helpers
         /// </summary>
         /// <param name="gitHubApiUrlHelper">Class implementing <see cref="IGitHubApiUrlHelper"/></param>
         /// <param name="log">Instance of a class implementing <see cref="IRetrieverLog"/></param>
-        public GitHubReleaseRetriever(IGitHubApiUrlHelper gitHubApiUrlHelper, IRetrieverLog log)
-            : this(gitHubApiUrlHelper)
+        /// <param name="oAuthToken">GitHub OAuth token - Pass an empty string if not used</param>
+        public GitHubReleaseRetriever(IGitHubApiUrlHelper gitHubApiUrlHelper, IRetrieverLog log, string oAuthToken)
+            : this(gitHubApiUrlHelper, oAuthToken)
         {
             _log = log;
         }
@@ -86,6 +95,15 @@ namespace Cake.PaketRestore.Helpers
         {
             var fullUri = _gitHubApiUrlHelper.LatestReleaseUrl(owner, repo);
             var response = await _httpClient.GetAsync(fullUri);
+            var isLimited = response.Headers.HasGitHubRateLimitedUs(_log);
+
+            //TODO - We need to redesign this if we use the Rate limit trick
+            if (isLimited)
+            {
+                _log.Warning("Using fallback as GitHub API calls have been rate limited");
+                return FallbackUrl;
+            }
+
             if (!response.IsSuccessStatusCode)
             {
                 _log?.Error(
@@ -110,10 +128,14 @@ namespace Cake.PaketRestore.Helpers
 
         #region Variables
 
+        private const string FallbackUrl =
+            "https://github.com/fsprojects/Paket/releases/download/3.31.8/paket.bootstrapper.exe";
+
         private readonly IGitHubApiUrlHelper _gitHubApiUrlHelper;
 
         private readonly HttpClient _httpClient;
         private readonly IRetrieverLog _log;
+        private readonly string _oAuthToken;
 
         #endregion
     }
