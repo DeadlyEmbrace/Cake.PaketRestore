@@ -1,5 +1,9 @@
 ## Cake.PaketRestore
 
+## Deprecation Notice
+This repository has been deprecated as it duplicates functionality that can be found in the [Cake.Paket](https://github.com/larzw/Cake.Paket) library.
+Please make use of [Cake.Paket](https://www.nuget.org/packages/Cake.Paket/) instead.
+
 [![Build status](https://ci.appveyor.com/api/projects/status/gs16wo0piv3i4qo8?svg=true)](https://ci.appveyor.com/project/DeadlyEmbrace/cake-paketrestore)
 [![NuGet](https://img.shields.io/nuget/v/Cake.PaketRestore.svg)](https://www.nuget.org/packages/Cake.PaketRestore/)
 [![Coverage Status](https://coveralls.io/repos/github/NinetailLabs/Cake.PaketRestore/badge.svg?branch=master)](https://coveralls.io/github/NinetailLabs/Cake.PaketRestore?branch=master)
